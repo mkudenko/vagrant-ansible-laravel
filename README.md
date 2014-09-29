@@ -1,4 +1,4 @@
-vagrant-ansible-laravel
+Vagrant-Ansible-Laravel
 =======================
 
-Ansible provisioning of the Vagrant box for multiple Laravel projects
+Ansible provisioning of the Vagrant box for multiple Laravel projects.
