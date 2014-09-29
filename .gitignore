@@ -29,7 +29,10 @@ nbproject
 .komodotools
 .idea
 
-
 # Vagrant specific files #
 ##########################
 .vagrant
+
+# Provisioning specific files #
+#######################
+provision/settings.yml
