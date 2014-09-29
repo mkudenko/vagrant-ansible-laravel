@@ -40,4 +40,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # SSH Set up.
   config.ssh.forward_agent = true
 
+  # Provision vagrant box with Ansible.
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = vagrant_dir + "/provision/playbooks/setup.yml"
+    ansible.host_key_checking = false
+    ansible.extra_vars = {user:"vagrant"}
+    if vconfig['ansible_verbosity'] != ''
+      ansible.verbose = vconfig['ansible_verbosity']
+    end
+  end
+
 end

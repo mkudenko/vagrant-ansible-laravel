@@ -6,3 +6,7 @@
 boxipaddress: "192.168.200.200"
 boxname: "vagrant"
 memory: 1024
+
+# Set the level of verbosity that Ansible will use
+# This can be one of "", "v", "vv", "vvv", or "vvvv"
+ansible_verbosity: ""

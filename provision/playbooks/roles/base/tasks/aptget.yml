@@ -1,0 +1,14 @@
+---
+- name: apt-get | apt-get update and ensure core packages are installed
+  apt: pkg={{ item }} state=installed
+  tags: aptget
+  sudo: true
+  with_items:
+    - atool
+    - atop
+    - curl
+    - git
+    - make
+    - tree
+    - vim
+    - unzip
