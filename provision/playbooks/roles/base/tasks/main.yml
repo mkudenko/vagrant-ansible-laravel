@@ -1,3 +1,4 @@
 ---
 - include: aptget.yml
 - include: bashrc.yml
+- include: gitconfig.yml
