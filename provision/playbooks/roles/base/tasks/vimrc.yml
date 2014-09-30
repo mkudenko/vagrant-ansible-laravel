@@ -1,0 +1,32 @@
+---  
+- name: Vimrc Config | Install Pathogen
+  raw: mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+  tags: vim
+
+- name: Vimrc Config | Install NERD Commenter
+  git: repo=https://github.com/scrooloose/nerdcommenter.git
+       dest=~/.vim/bundle/nerdcommenter
+  tags: vim
+
+- name: Vimrc Config | Install delimitMate for automating matched braces
+  git: repo=https://github.com/Raimondi/delimitMate.git
+       dest=~/.vim/bundle/delimitMate
+  tags: vim
+
+- name: Vimrc Config | Install PhpDocumentor
+  git: repo=https://github.com/vim-scripts/PDV--phpDocumentor-for-Vim.git
+       dest=~/.vim/bundle/phpDocumentor
+  tags: vim
+
+- name: Vimrc Config | Install Vim Colorschemes
+  git: repo={{ item.from }}
+       dest={{ item.to }}
+  tags: vim
+  with_items:
+    - { from: 'https://github.com/flazz/vim-colorschemes.git', to: '~/.vim/bundle/colorschemes' }
+    - { from: 'https://github.com/xolox/vim-misc.git', to: '~/.vim/bundle/vim-misc'}
+    - { from: 'https://github.com/xolox/vim-colorscheme-switcher.git', to: '~/.vim/bundle/colorscheme-switcher'}
+
+- name: Vimrc Config | add .vimrc file
+  template: src=vimrc.j2 dest=/home/{{ user }}/.vimrc
+  tags: vim

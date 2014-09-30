@@ -149,3 +149,10 @@ export HISTCONTROL=erasedups # No duplicates
 export HISTSIZE=10000 # Bigger history
 shopt -s histappend # Append to ~/.bash_history
 alias h='history | grep' # Easy history grep
+
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+fi
+
+# This is required for Ctrl+S to work in Vim for saving files.
+stty -ixon
