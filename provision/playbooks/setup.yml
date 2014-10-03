@@ -1,8 +1,19 @@
 ---
 - hosts: all
 
+  vars:
+    sites_dir: /home/vagrant/sites
+
   vars_files:
     - ../settings.yml
 
   roles:
     - base
+    - nginx
+
+  post_tasks:
+    - name: Move default index.php file into webroot directory.
+      template: src=templates/index.j2 dest={{ sites_dir }}/{{ webserver_hostname }}/index.html
+
+  handlers:
+      - include: common/handlers/main.yml

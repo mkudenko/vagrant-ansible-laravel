@@ -6,6 +6,10 @@
 git_name: "Your name"
 git_email: "your@email.com"
 
+# Webserver settings
+webserver_hostname: 'vagrant-laravel.local'
+webserver_hostname_alias: 'www.{{ webserver_hostname }}'
+
 # Vagrantfile configuration
 boxipaddress: "192.168.200.200"
 boxname: "vagrant"

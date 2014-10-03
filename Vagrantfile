@@ -37,6 +37,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
   end
 
+  # Set up NFS drive.
+  nfs_setting = RUBY_PLATFORM =~ /darwin/ || RUBY_PLATFORM =~ /linux/
+
+  # Setup synced folder for site files
+  config.vm.synced_folder "./webroot",
+    "/home/vagrant/sites/" + vconfig["webserver_hostname"],
+    type: "nfs",
+    create: true
+
   # SSH Set up.
   config.ssh.forward_agent = true
 

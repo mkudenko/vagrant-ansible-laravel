@@ -36,3 +36,7 @@ nbproject
 # Provisioning specific files #
 #######################
 provision/settings.yml
+
+# Default site folder #
+#################################################
+webroot/*

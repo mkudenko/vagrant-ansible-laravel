@@ -1,0 +1,40 @@
+---
+- name: Nginx | install nginx
+  apt: pkg=nginx state=installed
+  tags: nginx
+  sudo: true
+
+- name: Nginx | uncomment a line in default Nginx configuration file
+  lineinfile: dest=/etc/nginx/nginx.conf
+              regexp="^  {{'#'}} server_names_hash_bucket_size 64;"
+              insertafter="^  {{'#'}} server_names_hash_bucket_size 64;"
+              line="  server_names_hash_bucket_size 64;"
+              state=present
+  tags: nginx
+  sudo: true
+
+- name: Nginx | disable default server block
+  file: path=/etc/nginx/sites-enabled/default
+        state=absent
+  sudo: true
+  notify:
+    - restart nginx
+
+- name: Nginx | create our default server block
+  template: src=default_server_block.j2
+            dest=/etc/nginx/sites-available/{{ webserver_hostname }}
+  tags: nginx
+  sudo: true
+
+- name: Nginx | enable our default server block
+  file: src=/etc/nginx/sites-available/{{ webserver_hostname }}
+        dest=/etc/nginx/sites-enabled/{{ webserver_hostname }}
+        state=link
+  tags: nginx
+  sudo: true
+  notify:
+    - restart nginx
+
+- name: Nginx | set default login directory to be /home/vagrant/sites
+  lineinfile: dest=/home/{{ user }}/.bashrc state=present line='cd {{ sites_dir }}'
+  tags: nginx
