@@ -1,5 +1,10 @@
 ---
-- name: apt-get | apt-get update and ensure core packages are installed
+- name: apt-get | apt-get update
+  apt: update_cache=yes
+  tags: aptget
+  sudo: true
+
+- name: apt-get | ensure core packages are installed
   apt: pkg={{ item }} state=installed
   tags: aptget
   sudo: true
@@ -9,6 +14,7 @@
     - curl
     - git
     - make
+    - tig
     - tree
     - vim
     - unzip
