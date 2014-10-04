@@ -1,0 +1,34 @@
+server {
+    listen 80;
+
+    server_name adminer.{{ webserver_hostname }};
+
+    root {{ sites_dir }}/adminer;
+
+    index index.html index.htm index.php;
+
+    charset utf-8;
+
+    try_files $uri $uri/ @rewrite;
+    location @rewrite {
+        rewrite ^/(.*)$ /index.php?_url=/$1;
+    }
+
+    access_log off;
+    error_log  /var/log/nginx/adminer-error.log error;
+
+    error_page 404 /index.php;
+
+    sendfile off;
+
+    location ~ \.php$ {
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass unix:/var/run/php5-fpm.sock;
+        fastcgi_index index.php;
+        include fastcgi_params;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+}
