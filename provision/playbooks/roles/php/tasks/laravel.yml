@@ -4,6 +4,13 @@
   tags: laravel
   sudo: true
 
+- name: PHP | Check if Laravel Installer is installed
+  raw: ls /home/vagrant/.composer/vendor/bin/laravel
+  register: laravel_installer
+  ignore_errors: true
+  tags: laravel
+
 - name: PHP | Download Laravel Installer
-  command: composer global require "laravel/installer=~1.1"
+  raw: composer global require "laravel/installer=~1.1"
+  when: laravel_installer.stdout.find('No such file or directory') != -1
   tags: laravel
