@@ -35,6 +35,7 @@ nbproject
 
 # Provisioning specific files #
 #######################
+provision/host.ini
 provision/settings.yml
 
 # Default site folder #
