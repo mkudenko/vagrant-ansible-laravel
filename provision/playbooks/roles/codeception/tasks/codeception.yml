@@ -1,0 +1,46 @@
+---
+- name: Codeception | download codeception
+  shell: wget http://codeception.com/codecept.phar -O /usr/local/bin/codecept
+  sudo: true
+  tags: codeception
+
+- name: Codeception | make codecept file executable
+  shell: chmod +x /usr/local/bin/codecept
+  sudo: true
+  tags: codeception
+
+- name: Codeception | install PhantomJS - step 1
+  get_url: url=https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.7-linux-x86_64.tar.bz2 dest=/usr/local/share
+  sudo: true
+  tags: codeception
+
+- name: Codeception | install PhantomJS - step 2
+  shell: cd /usr/local/share && aunpack phantomjs-1.9.7-linux-x86_64.tar.bz2
+  sudo: true
+  tags: codeception
+
+- name: Codeception | install PhantomJS - step 3
+  shell: ln -s /usr/local/share/phantomjs-1.9.7-linux-x86_64/bin/phantomjs /usr/bin/
+  sudo: true
+  ignore_errors: True
+  tags: codeception
+
+- name: Codeception | install supervisor
+  apt: pkg=supervisor
+  sudo: true
+  tags: codeception
+
+- name: Codeception | create phantomjs configuration for supervisor
+  action: template src=phantomjs.conf.j2 dest=/etc/supervisor/conf.d/phantomjs.conf
+  sudo: true
+  tags: codeception
+
+- name: Codeception | look for changed supervisor configuration
+  shell: supervisorctl reread
+  sudo: true
+  tags: codeception
+
+- name: Codeception | enable any changes for supervisor configuration
+  shell: supervisorctl update
+  sudo: true
+  tags: codeception
