@@ -60,4 +60,20 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
+  # Create synced folders for each virtual host.
+  vconfig['vhosts'].each do |vhost|
+    site_alias = vhost['alias']
+    folder_path = vhost['path']
+    config.vm.synced_folder folder_path,
+      "/home/vagrant/sites/" + site_alias,
+      create: true,
+      type: "nfs",
+      :nfs => nfs_setting
+  end
+
+  # Create all virtual hosts
+  config.trigger.after [:up, :reload], :stdout => true, :force => true do
+    run 'ansible-playbook -i ' + boxipaddress + ', -K --user=vagrant --private-key=~/.vagrant.d/insecure_private_key ' + vagrant_dir + '/provision/playbooks/virtual_hosts.yml --extra-vars "local_ip_address=' + boxipaddress + '"'
+  end
+
 end

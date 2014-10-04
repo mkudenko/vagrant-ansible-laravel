@@ -10,6 +10,12 @@ git_email: "your@email.com"
 webserver_hostname: 'vagrant-laravel.local'
 webserver_hostname_alias: 'www.{{ webserver_hostname }}'
 
+# Virtual hosts
+vhosts:
+  - alias: domain.local
+    path: /absolute/path/to/synced/folder
+    db: projectdb
+
 # Vagrantfile configuration
 boxipaddress: "192.168.200.200"
 boxname: "vagrant"
@@ -38,6 +44,10 @@ mysql_max_allowed_packet: 128M
 innodb_file_per_table: innodb_file_per_table
 mysql_character_set_server: utf8
 mysql_collation_server: utf8_general_ci
+
+# Local hosts file location
+# Default location on *nix hosts is '/etc/hosts'
+hosts_file_location: "/etc/hosts"
 
 # Set the level of verbosity that Ansible will use
 # This can be one of "", "v", "vv", "vvv", or "vvvv"

@@ -157,3 +157,7 @@ fi
 
 # This is required for Ctrl+S to work in Vim for saving files.
 stty -ixon
+
+# Laravel aliases
+alias newlaravel='laravel new code && chmod -R 777 code/app/storage && cd code'
+alias getlaravel='git clone $1 code && cd code'
