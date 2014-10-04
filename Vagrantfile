@@ -7,6 +7,7 @@
 
 # Find the current vagrant directory.
 vagrant_dir = File.expand_path(File.dirname(__FILE__))
+provision_hosts_file = vagrant_dir + '/provision/host.ini'
 
 # Include config from provision/settings.yml
 require 'yaml'
@@ -49,6 +50,20 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # SSH Set up.
   config.ssh.forward_agent = true
+
+  # Run an Ansible playbook on setting the box up
+  if !File.exist?(provision_hosts_file)
+    config.trigger.before :up, :stdout => true, :force => true do
+      run 'ansible-playbook -i ' + boxipaddress + ', --ask-sudo-pass ' + vagrant_dir + '/provision/playbooks/local_up.yml --extra-vars "local_ip_address=' + boxipaddress + '"'
+    end
+  end
+
+  # Run the halt/destroy playbook upon halting or destroying the box
+  if File.exist?(provision_hosts_file)
+    config.trigger.before [:halt, :destroy], :stdout => true, :force => true do
+      run 'ansible-playbook -i ' + boxipaddress + ', --ask-sudo-pass ' + vagrant_dir + '/provision/playbooks/local_halt_destroy.yml'
+    end
+  end
 
   # Provision vagrant box with Ansible.
   config.vm.provision "ansible" do |ansible|
