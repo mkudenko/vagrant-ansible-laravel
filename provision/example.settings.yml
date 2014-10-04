@@ -26,6 +26,19 @@ php_display_startup_errors: On
 php_html_errors: On
 php_date_timezone: Pacific/Auckland
 
+# MySQL Settings
+mysql_port: 3306
+mysql_root_password: password
+server_hostname: vagrant
+dbuser: user
+dbpass: password
+
+# MySQL my.cnf settings
+mysql_max_allowed_packet: 128M
+innodb_file_per_table: innodb_file_per_table
+mysql_character_set_server: utf8
+mysql_collation_server: utf8_general_ci
+
 # Set the level of verbosity that Ansible will use
 # This can be one of "", "v", "vv", "vvv", or "vvvv"
 ansible_verbosity: ""

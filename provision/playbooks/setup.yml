@@ -11,6 +11,7 @@
     - base
     - nginx
     - php
+    - mysql
 
   post_tasks:
     - name: Move default index.php file into webroot directory.
