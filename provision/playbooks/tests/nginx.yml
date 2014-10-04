@@ -1,0 +1,4 @@
+---
+- name: Test | Nginx is installed
+  shell: nginx -v
+  tags: test

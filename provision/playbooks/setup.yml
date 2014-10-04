@@ -19,5 +19,7 @@
     - name: Move default index.php file into webroot directory.
       template: src=templates/index.j2 dest={{ sites_dir }}/{{ webserver_hostname }}/index.php
 
+    - include: tests/main.yml
+
   handlers:
       - include: common/handlers/main.yml

@@ -1,0 +1,4 @@
+---
+- name: Test | MySQL is installed
+  shell: mysql --version
+  tags: test
