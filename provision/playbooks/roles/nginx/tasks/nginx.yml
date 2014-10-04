@@ -37,3 +37,7 @@
 - name: Nginx | set default login directory to be /home/vagrant/sites
   lineinfile: dest=/home/{{ user }}/.bashrc state=present line='cd {{ sites_dir }}'
   tags: nginx
+
+- name: Nginx | restart nginx
+  service: name=nginx state=restarted
+  sudo: true
