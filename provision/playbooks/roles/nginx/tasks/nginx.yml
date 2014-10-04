@@ -4,14 +4,13 @@
   tags: nginx
   sudo: true
 
-- name: Nginx | uncomment a line in default Nginx configuration file
-  lineinfile: dest=/etc/nginx/nginx.conf
-              regexp="^  {{'#'}} server_names_hash_bucket_size 64;"
-              insertafter="^  {{'#'}} server_names_hash_bucket_size 64;"
-              line="  server_names_hash_bucket_size 64;"
-              state=present
+- name: Nginx | nginx settings
+  template: src=nginx.conf.j2
+            dest=/etc/nginx/nginx.conf
   tags: nginx
   sudo: true
+  notify:
+    - restart nginx
 
 - name: Nginx | disable default server block
   file: path=/etc/nginx/sites-enabled/default
