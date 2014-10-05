@@ -1,26 +1,43 @@
 ---
+- name: Codeception | Check if Codeception is installed
+  raw: codecept
+  register: codecept_installed
+  ignore_errors: true
+  tags: vim
+
 - name: Codeception | download codeception
   shell: wget http://codeception.com/codecept.phar -O /usr/local/bin/codecept
+  when: codecept_installed.stdout.find('command not found') != -1
   sudo: true
   tags: codeception
 
 - name: Codeception | make codecept file executable
   shell: chmod +x /usr/local/bin/codecept
+  when: codecept_installed.stdout.find('command not found') != -1
   sudo: true
   tags: codeception
 
+- name: Codeception | Check if PhantomJS is installed
+  raw: which phantomjs
+  register: phantomjs_installed
+  ignore_errors: true
+  tags: vim
+
 - name: Codeception | install PhantomJS - step 1
   get_url: url=https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.7-linux-x86_64.tar.bz2 dest=/usr/local/share
+  when: phantomjs_installed.stdout.find('/usr/bin/phantomjs') == -1
   sudo: true
   tags: codeception
 
 - name: Codeception | install PhantomJS - step 2
   shell: cd /usr/local/share && aunpack phantomjs-1.9.7-linux-x86_64.tar.bz2
+  when: phantomjs_installed.stdout.find('/usr/bin/phantomjs') == -1
   sudo: true
   tags: codeception
 
 - name: Codeception | install PhantomJS - step 3
   shell: ln -s /usr/local/share/phantomjs-1.9.7-linux-x86_64/bin/phantomjs /usr/bin/
+  when: phantomjs_installed.stdout.find('/usr/bin/phantomjs') == -1
   sudo: true
   ignore_errors: True
   tags: codeception
