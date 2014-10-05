@@ -26,3 +26,8 @@
       sudo: true
       with_items:
         - "{{ vhosts }}"
+
+    - name: local actions | remove entry from known hosts
+      command: ssh-keygen -R {{ boxipaddress }}
+      delegate_to: 127.0.0.1
+      sudo: true
