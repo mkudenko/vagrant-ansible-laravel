@@ -4,6 +4,19 @@ Ansible provisioning of the Vagrant box for multiple Laravel projects. It is des
 
 That setup is heavily inspired by [https://github.com/hashbangcode/vlad](https://github.com/hashbangcode/vlad) and [Laravel Homestead](http://laravel.com/docs/4.2/homestead).
 
+## What's inside ##
+
+* Ubuntu 14.04 64-bit
+* Nginx
+* PHP-FPM 5.6
+* MySQL + Adminer
+* Codeception + PhantomJS
+* NodeJS + Bower + Grunt
+* Composer + Laravel installer
+* Git, Vim, etc.
+
+Ruby, Sass, Compass are currently disabled. For some reason, Ansible has troubles installing gems.
+
 ## Prerequisites ##
 
 1. Linux or Mac
