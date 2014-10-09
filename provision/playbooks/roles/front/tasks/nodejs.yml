@@ -20,12 +20,3 @@
   apt: name=build-essential state=present
   tags: nodejs
   sudo: true
-
-- name: Install Bower / Grunt / Grunt CLI
-  npm: name={{ item }} global=yes
-  tags: nodejs
-  with_items:
-    - bower
-    - grunt
-    - grunt-cli
-  sudo: true
