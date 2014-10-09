@@ -6,18 +6,3 @@
 - name: Test | NPM is installed
   shell: npm -v
   tags: test
-
-- name: Test | Bower is installed
-  shell: bower -v
-  tags: test
-
-- name: Test | Check Grunt CLI version
-  shell: grunt -v
-  tags: test
-  ignore_errors: true
-  register: grunt_output
-
-- name: Test | Grunt is installed
-  fail: "Grunt CLI is not installed"
-  when: grunt_output.stdout.find('The grunt command line interface') == -1
-  tags: test
