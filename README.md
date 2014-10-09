@@ -13,7 +13,7 @@ That setup is heavily inspired by [https://github.com/hashbangcode/vlad](https:/
 * Codeception + PhantomJS
 * NodeJS + Bower + Grunt
 * Composer + Laravel installer
-* Git, Vim, etc.
+* Git, Vim, Midnight Commander, etc.
 
 Ruby, Sass, Compass are currently disabled. For some reason, Ansible has troubles installing gems.
 
