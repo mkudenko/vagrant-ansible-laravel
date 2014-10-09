@@ -64,7 +64,7 @@ Virtual hosts are updated every time you run `vagrant up` or `vagrant reload`.
 
 Assuming that you've already created a virtual host for your app `project.local`, go to `~/sites/project.local`.
 
-Your application must reside in the that folder, no subfolders.
+Your application must reside in that folder, no subfolders.
 
     ~/sites/project.local/public/index.php
 
