@@ -11,7 +11,7 @@ That setup is heavily inspired by [https://github.com/hashbangcode/vlad](https:/
 * PHP-FPM 5.6
 * MySQL + Adminer
 * Codeception + PhantomJS
-* NodeJS + Bower + Grunt
+* NodeJS
 * Composer + Laravel installer
 * Git, Vim, Midnight Commander, etc.
 
