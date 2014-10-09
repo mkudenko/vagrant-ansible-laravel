@@ -60,18 +60,12 @@ Your project folders must exist but shouldn't contain any code. You will create 
 
 Virtual hosts are updated every time you run `vagrant up` or `vagrant reload`.
 
-## Creating a new application ##
+## Creating an application ##
 
-Assuming that you've already created a virtual host for your new app `new-project.local`, go to `~/sites/new-project.local` and run `laravel new code`.
+Assuming that you've already created a virtual host for your app `project.local`, go to `~/sites/project.local`.
 
-All virtual hosts are automatically setup that way, so your app must reside in the `code` folder.
+Your application must reside in the that folder, no subfolders.
 
-Alternatively you can run `newlaravel`. That is a custom bash alias, that will generate code for the app, change permissions for `app/storage` folder, and take you into `~/sites/new-project.local/code` directory.
+    ~/sites/project.local/public/index.php
 
-Open your browser and go to `new-project.local/`.
-
-## Creating an existing application ##
-
-Assuming that you've already created a virtual host for your existing app `exist-app.local`, go to `~/sites/exist-app.local` and run `git clone [repo] code`.
-
-Again, your app must reside in the `code` folder.
+Open your browser and go to `project.local/`. Job done.

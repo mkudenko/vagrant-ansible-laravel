@@ -3,7 +3,7 @@ server {
 
     server_name {{ item['alias'] }} www.{{ item['alias'] }};
 
-    root {{ sites_dir }}/{{ item['alias'] }}/code/public;
+    root {{ sites_dir }}/{{ item['alias'] }}/public;
 
     index index.html index.htm index.php;
 
