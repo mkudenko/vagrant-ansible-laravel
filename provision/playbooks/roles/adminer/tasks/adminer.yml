@@ -23,12 +23,18 @@
   template: src=nginx_adminer_vhost.j2 dest=/etc/nginx/sites-available/adminer.{{ webserver_hostname }}
   tags: adminer
   sudo: true
-  notify:
-    - restart nginx
 
 - name: Adminer | enable adminer site
   file: src=/etc/nginx/sites-available/adminer.{{ webserver_hostname }} dest=/etc/nginx/sites-enabled/adminer.{{ webserver_hostname }} state=link
   tags: adminer
   sudo: true
-  notify:
-    - restart nginx
+
+- name: Adminer | restart nginx
+  service: name=nginx state=restarted
+  tags: adminer
+  sudo: true
+
+- name: Adminer | restart fpm
+  service: name=php5-fpm state=restarted
+  tags: adminer
+  sudo: true

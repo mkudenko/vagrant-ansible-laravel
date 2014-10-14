@@ -169,6 +169,30 @@
     - restart nginx
     - restart fpm
 
+- name: PHP | configure for nginx 1
+  lineinfile: dest=/etc/php5/fpm/pool.d/www.conf regexp="^[#|;]?group = www" insertafter="^[#|;]?group = www" line="group = vagrant"
+  tags: php
+  sudo: true
+  notify:
+    - restart nginx
+    - restart fpm
+
+- name: PHP | configure for nginx 2
+  lineinfile: dest=/etc/php5/fpm/pool.d/www.conf regexp="^[#|;]?listen\.group = www" insertafter="^[#|;]?listen\.group = www" line="listen.group = vagrant"
+  tags: php
+  sudo: true
+  notify:
+    - restart nginx
+    - restart fpm
+
+- name: PHP | configure for nginx 3
+  lineinfile: dest=/etc/php5/fpm/pool.d/www.conf regexp="^[#|;]?listen\.mode = 0660" insertafter="^[#|;]?listen\.mode = 0660" line="listen.mode = 0660"
+  tags: php
+  sudo: true
+  notify:
+    - restart nginx
+    - restart fpm
+
 - name: PHP | restart fpm
   service: name=php5-fpm state=restarted
   sudo: true

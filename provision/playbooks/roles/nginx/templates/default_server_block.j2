@@ -11,7 +11,7 @@ server {
     charset utf-8;
 
     location / {
-        try_files \$uri \$uri/ /index.php?\$query_string;
+        try_files $uri $uri/ /index.php?$query_string;
     }
 
     access_log off;
@@ -26,9 +26,5 @@ server {
         fastcgi_pass unix:/var/run/php5-fpm.sock;
         fastcgi_index index.php;
         include fastcgi_params;
-    }
-
-    location ~ /\.ht {
-        deny all;
     }
 }

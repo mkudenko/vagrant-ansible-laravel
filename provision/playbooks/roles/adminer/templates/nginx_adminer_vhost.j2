@@ -9,9 +9,8 @@ server {
 
     charset utf-8;
 
-    try_files $uri $uri/ @rewrite;
-    location @rewrite {
-        rewrite ^/(.*)$ /index.php?_url=/$1;
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
     }
 
     access_log off;

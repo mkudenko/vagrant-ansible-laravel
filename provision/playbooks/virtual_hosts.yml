@@ -44,4 +44,3 @@
 
   handlers:
       - include: common/handlers/main.yml
-
