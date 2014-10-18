@@ -6,7 +6,7 @@
 git_name: "Your name"
 git_email: "your@email.com"
 
-# Webserver settings
+# Welcome page settings
 webserver_hostname: 'vagrant-laravel.local'
 webserver_hostname_alias: 'www.{{ webserver_hostname }}'
 
@@ -19,8 +19,14 @@ vhosts:
 # Vagrantfile configuration
 boxipaddress: "192.168.200.200"
 boxname: "vagrant"
+
+# Give VM 1/4 of system memory
 memory: 1024
-cpus: 1
+# Give VM access to all cpu cores on the host
+# To find out the number of cores, run the following commands:
+#   Mac: sysctl -n hw.ncpu
+#   Linux: nproc
+cpus: 2
 
 # php.ini settings
 php_memory_limit: 512M
