@@ -88,7 +88,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Create all virtual hosts
   config.trigger.after [:up, :reload], :stdout => true, :force => true do
-    run 'ansible-playbook -i ' + boxipaddress + ', -K --user=vagrant --private-key=~/.vagrant.d/insecure_private_key ' + vagrant_dir + '/provision/playbooks/virtual_hosts.yml --extra-vars "local_ip_address=' + boxipaddress + '"'
+    run 'ansible-playbook -i ' + boxipaddress + ', -K --user=vagrant --private-key=' + vagrant_dir + '/.vagrant/machines/vagrant/virtualbox/private_key ' + vagrant_dir + '/provision/playbooks/virtual_hosts.yml --extra-vars "local_ip_address=' + boxipaddress + '"'
   end
 
 end
