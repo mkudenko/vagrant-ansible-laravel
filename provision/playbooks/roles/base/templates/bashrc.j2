@@ -127,9 +127,9 @@ export PATH=${PATH}:${HOME}/.composer/vendor/bin
 alias screen="screen -U"
 
 # ls aliases
-alias ls="ls -hG"
-alias l="ls -lhG"
-alias la="ls -lahG"
+alias ls="ls -h"
+alias l="ls -lh"
+alias la="ls -lah"
 alias ll="ls -la"
 
 alias ..='cd ..'
@@ -157,3 +157,5 @@ fi
 
 # This is required for Ctrl+S to work in Vim for saving files.
 stty -ixon
+alias art='php artisan'
+alias test='vendor/bin/phpunit'
