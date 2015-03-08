@@ -15,6 +15,7 @@ vhosts:
   - alias: domain.local
     path: /absolute/path/to/synced/folder
     db: projectdb
+    test_db: projectdb_test
 
 # Vagrantfile configuration
 boxipaddress: "192.168.200.200"
