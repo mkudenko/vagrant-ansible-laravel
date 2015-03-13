@@ -4,5 +4,6 @@
   tags: sqlite
   sudo: true
   with_items:    
+   - php5-sqlite
    - sqlite3
    - libsqlite3-dev
