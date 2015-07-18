@@ -47,16 +47,5 @@
       with_items:
         - "{{ vhosts }}"
 
-    - name: MySQL | create test applications databases
-      mysql_db:
-        name={{ item["test_db"] }}
-        state=present
-        login_password={{ mysql_root_password }}
-        login_user=root
-        collation={{ mysql_collation_server }}
-      tags: mysql
-      with_items:
-        - "{{ vhosts }}"
-
   handlers:
       - include: common/handlers/main.yml

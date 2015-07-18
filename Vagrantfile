@@ -5,6 +5,16 @@
 # A Laravel development platform in a box.
 # See the readme file (README.md) for more information.
 
+# If vagrant-trigger isn't instaled then exit
+if !Vagrant.has_plugin?("vagrant-triggers")
+  puts "'vagrant-triggers' plugin is required"
+  puts "This can be installed by running:"
+  puts
+  puts " vagrant plugin install vagrant-triggers"
+  puts
+  exit
+end
+
 # Find the current vagrant directory.
 vagrant_dir = File.expand_path(File.dirname(__FILE__))
 provision_hosts_file = vagrant_dir + '/provision/host.ini'

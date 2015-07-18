@@ -142,6 +142,7 @@ alias gst='git status'
 alias gl='git log --oneline'
 alias gd='git diff'
 alias gc='git commit -m'
+alias gca='git commit -am'
 
 alias untarf='tar xf *.tar && rm *.tar'
 
@@ -157,5 +158,12 @@ fi
 
 # This is required for Ctrl+S to work in Vim for saving files.
 stty -ixon
+
+# Laravel aliases
 alias art='php artisan'
 alias test='vendor/bin/codecept run'
+
+# System aliases
+alias restart='sudo service nginx restart && sudo service php5-fpm restart'
+
+# Other

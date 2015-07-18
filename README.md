@@ -11,18 +11,23 @@ That setup is heavily inspired by [https://github.com/hashbangcode/vlad](https:/
 * PHP-FPM 5.6
 * MySQL + Adminer
 * Codeception + PhantomJS
-* NodeJS
+* NodeJS + Grunt + Bower + Gulp
 * Composer + Laravel installer
 * Git, Vim, Midnight Commander, etc.
-
-Ruby, Sass, Compass are currently disabled. For some reason, Ansible has troubles installing gems.
 
 ## Prerequisites ##
 
 1. Linux or Mac
-2. [Vagrant](https://www.vagrantup.com/downloads.html)
-3. [Ansible](http://docs.ansible.com/intro_installation.html)
-4. [Virtual Box](https://www.virtualbox.org/wiki/Downloads)
+2. Vagrant ([latest version](https://www.vagrantup.com/downloads.html))
+3. Ansible ([installation instructions](http://docs.ansible.com/intro_installation.html))
+4. Virtual Box ([download](https://www.virtualbox.org/wiki/Downloads))
+5. NFS (This comes pre-installed on Mac OS X 10.5+ (Leopard and higher))
+
+    `sudo apt-get install nfs-kernel-server nfs-common portmap`
+
+6. vagrant-triggers plugin
+
+    `vagrant plugin install vagrant-triggers`
 
 ## Setup steps ##
 

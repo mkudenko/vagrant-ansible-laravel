@@ -1,5 +1,5 @@
 ---
 - name: restart fpm
-  service: name=php5-fpm state=restarted
+  raw: service php5-fpm restart
   sudo: true
 

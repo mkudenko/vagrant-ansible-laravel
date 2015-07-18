@@ -3,85 +3,70 @@
   raw: ls ~/.vim/autoload/pathogen.vim
   register: pathogen_installed
   ignore_errors: true
-  tags: vim
 
 - name: Vimrc Config | Install Pathogen
   raw: mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
   when: pathogen_installed.stdout.find('No such file or directory') != -1
-  tags: vim
 
 - name: Vimrc Config | Check if NERD Commenter is installed
   raw: ls ~/.vim/bundle/nerdcommenter
   register: nerd_commenter_installed
   ignore_errors: true
-  tags: vim
 
 - name: Vimrc Config | Install NERD Commenter
   git: repo=https://github.com/scrooloose/nerdcommenter.git
        dest=~/.vim/bundle/nerdcommenter
   when: nerd_commenter_installed.stdout.find('No such file or directory') != -1
-  tags: vim
 
 - name: Vimrc Config | Check if delimitMate is installed
   raw: ls ~/.vim/bundle/delimitMate
   register: delimitMate_installed
   ignore_errors: true
-  tags: vim
 
 - name: Vimrc Config | Install delimitMate for automating matched braces
   git: repo=https://github.com/Raimondi/delimitMate.git
        dest=~/.vim/bundle/delimitMate
   when: delimitMate_installed.stdout.find('No such file or directory') != -1
-  tags: vim
 
 - name: Vimrc Config | Check if PhpDocumentor is installed
   raw: ls ~/.vim/bundle/phpDocumentor
   register: phpDocumentor_installed
   ignore_errors: true
-  tags: vim
 
 - name: Vimrc Config | Install PhpDocumentor
   git: repo=https://github.com/vim-scripts/PDV--phpDocumentor-for-Vim.git
        dest=~/.vim/bundle/phpDocumentor
   when: phpDocumentor_installed.stdout.find('No such file or directory') != -1
-  tags: vim
 
 - name: Vimrc Config | Check if Vim Colorschemes is installed
   raw: ls ~/.vim/bundle/colorschemes
   register: colorschemes_installed
   ignore_errors: true
-  tags: vim
 
 - name: Vimrc Config | Install Vim Colorschemes
   git: repo=https://github.com/flazz/vim-colorschemes.git
        dest=~/.vim/bundle/colorschemes
   when: colorschemes_installed.stdout.find('No such file or directory') != -1
-  tags: vim
 
 - name: Vimrc Config | Check if Vim Misc is installed
   raw: ls ~/.vim/bundle/vim-misc
   register: vim_misc_installed
   ignore_errors: true
-  tags: vim
 
 - name: Vimrc Config | Install Vim Misc
   git: repo=https://github.com/xolox/vim-misc.git
        dest=~/.vim/bundle/vim-misc
   when: vim_misc_installed.stdout.find('No such file or directory') != -1
-  tags: vim
 
 - name: Vimrc Config | Check if Vim Colorscheme Switcher is installed
   raw: ls ~/.vim/bundle/colorscheme-switcher
   register: colorscheme_switcher_installed
   ignore_errors: true
-  tags: vim
 
 - name: Vimrc Config | Install Vim Colorscheme Switcher
   git: repo=https://github.com/xolox/vim-colorscheme-switcher.git
        dest=~/.vim/bundle/colorscheme-switcher
   when: colorscheme_switcher_installed.stdout.find('No such file or directory') != -1
-  tags: vim
 
 - name: Vimrc Config | add .vimrc file
   template: src=vimrc.j2 dest=/home/{{ user }}/.vimrc
-  tags: vim
