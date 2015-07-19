@@ -18,7 +18,7 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
+HISTSIZE=10000
 HISTFILESIZE=2000
 
 # check the window size after each command and, if necessary,
@@ -126,12 +126,6 @@ export PATH=${PATH}:${HOME}/.composer/vendor/bin
 # Required for unicode screen
 alias screen="screen -U"
 
-# ls aliases
-alias ls="ls -h"
-alias l="ls -lh"
-alias la="ls -lah"
-alias ll="ls -la"
-
 alias ..='cd ..'
 alias -- -='cd -'
 
@@ -147,9 +141,6 @@ alias gca='git commit -am'
 alias untarf='tar xf *.tar && rm *.tar'
 
 # Some fancy history stuff
-export HISTCONTROL=erasedups # No duplicates
-export HISTSIZE=10000 # Bigger history
-shopt -s histappend # Append to ~/.bash_history
 alias h='history | grep' # Easy history grep
 
 if [ -f ~/.git-completion.bash ]; then
@@ -161,7 +152,7 @@ stty -ixon
 
 # Laravel aliases
 alias art='php artisan'
-alias test='vendor/bin/codecept run'
+alias amrs='php artisan migrate:refresh --seed'
 
 # System aliases
 alias restart='sudo service nginx restart && sudo service php5-fpm restart'
