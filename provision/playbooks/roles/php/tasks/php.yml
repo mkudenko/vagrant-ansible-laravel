@@ -16,6 +16,7 @@
     - php-pear
     - php5-gd
     - php5-mcrypt
+    - php5-mssql
     - php5-mysql
     - php5-xmlrpc
   sudo: true
