@@ -13,7 +13,7 @@
     - php
     - mysql
     - adminer
-    - codeception
+    - automated_testing
     - front
 
   post_tasks:
