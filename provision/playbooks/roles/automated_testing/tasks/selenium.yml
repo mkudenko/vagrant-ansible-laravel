@@ -48,7 +48,7 @@
   when: chromedriver_installed.stdout.find('No such file or directory') != -1
 
 - name: Selenium | Unpack chromedriver.
-  unarchive: src=/home/vagrant/chromedriver_linux64.zip dest=/usr/local/bin/chromedriver
+  raw: unzip -o -q /home/vagrant/chromedriver_linux64.zip -d /usr/local/bin
   when: chromedriver_installed.stdout.find('No such file or directory') != -1
   sudo: true
 
