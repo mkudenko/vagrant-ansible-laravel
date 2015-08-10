@@ -138,12 +138,9 @@
     - restart nginx
     - restart fpm
 
-- name: PHP | disable opcache
-  lineinfile: dest=/etc/php5/fpm/php.ini regexp="^;{{ item }}=" insertafter="^;{{ item }}=" line="{{ item }}=0"
+- name: PHP | configure opcache
+  template: src=opcache.ini.j2 dest=/etc/php5/mods-available/opcache.ini
   sudo: true
-  with_items:
-    - opcache.enable
-    - opcache.enable_cli
   notify:
     - restart nginx
     - restart fpm
