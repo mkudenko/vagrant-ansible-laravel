@@ -1,5 +1,7 @@
 # Vagrant-Ansible-Laravel #
 
+[Click here](https://github.com/mkudenko/vagrant-laravel-php7) to check out the PHP7 version of this box with more features.
+
 Ansible provisioning of the Vagrant box for multiple Laravel projects. It is designed so that you don't need to have things like webserver or Composer installed on your local system. You'll be able to do everything from within the virtual box.
 
 That setup is heavily inspired by [https://github.com/hashbangcode/vlad](https://github.com/hashbangcode/vlad) and [Laravel Homestead](http://laravel.com/docs/4.2/homestead).
